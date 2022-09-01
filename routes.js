@@ -1,14 +1,13 @@
-import express from "express";
-import parties from "./src/controllers/parties_controller.js";
+import express, { application } from "express";
+import api from "./api/index.js";
 
 const routes = express.Router();
 
 routes.use(express.static('public'))
 
-routes.get("/parties", parties.findAll);
-routes.post("/parties", parties.addParty);
-routes.get("/parties/:id", parties.findParty);
-routes.put("/parties/:id", parties.updateParty);
-routes.delete("/parties/:id", parties.deleteParty);
+routes
+  .get('/', function(){
+  })
+  .use(api);
 
 export { routes as default };
