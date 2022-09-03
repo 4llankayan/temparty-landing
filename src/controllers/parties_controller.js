@@ -1,15 +1,15 @@
-import PartyRepository from "../models/party.js";
+import Party from "../models/party.js";
 
 function findAll(req, res) {
-  PartyRepository.findAll().then((result) => res.json(result));
+  Party.findAll().then((result) => res.json(result));
 }
 
 function findParty(req, res) {
-  PartyRepository.findByPk(req.params.id).then((result) => res.json(result));
+  Party.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 function addParty(req, res) {
-  PartyRepository.create({
+  Party.create({
     name: req.headers['name'],
     descricao: req.headers['descricao'],
     address: req.headers['address']
@@ -17,7 +17,7 @@ function addParty(req, res) {
 }
 
 async function updateParty(req, res) {
-  await PartyRepository.update(
+  await Party.update(
     {
       name: req.headers['name'],
       descricao: req.headers['descricao'],
@@ -29,17 +29,17 @@ async function updateParty(req, res) {
       },
     }
   );
-  PartyRepository.findByPk(req.params.id).then((result) => res.json(result));
+  Party.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 async function deleteParty(req, res) {
-  await PartyRepository.destroy({
+  await Party.destroy({
     where: {
       id: req.params.id,
     },
   });
 
-  PartyRepository.findAll().then((result) => res.json(result));
+  Party.findAll().then((result) => res.json(result));
 }
 
 export default { findAll, addParty, findParty, updateParty, deleteParty };
