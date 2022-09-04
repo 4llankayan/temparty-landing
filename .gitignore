@@ -4,6 +4,8 @@ node_modules
 node_modules/
 package-lock.json
 package.json
+tailwind.config.cjs
+
 # Logs
 logs
 *.log
