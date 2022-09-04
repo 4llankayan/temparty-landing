@@ -3,7 +3,7 @@ import db from "../db.js";
 
 export default db.define("user", {
     id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -17,4 +17,11 @@ export default db.define("user", {
         allowNull: false,
         unique: true,
     },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    token: {
+        type: Sequelize.STRING,
+    }
 });
