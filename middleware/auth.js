@@ -2,6 +2,11 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv/config.js";
 
 function verifyToken(req, res, next) {
+
+  if (!req.body) {
+    return res.status(404).send("Error");
+  }
+
   const token = req.body.token || req.query.token || req.headers["x-access-token"];
 
   if (!token) {
